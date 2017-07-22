@@ -565,18 +565,16 @@ class RssFeedEmitter extends TinyEmitter {
       // we have a new feed item, so we need to add it to the
       // data.item list.
       feedparser.on( 'readable', () => {
-
-        // Read the item itself.
-        let item = feedparser.read();
-
-        // Force the feed URL inside the feed item because
-        // some times the RSS doesn't have the feed url inside
-        // every item.
-        item.meta.link = feedUrl;
-
-        // Add to the data.items.
-        data.items.push( item );
-
+        let item;
+        // Read the item itself
+        while(item = feedparser.read()) {
+          // Force the feed URL inside the feed item because
+          // some times the RSS doesn't have the feed url inside
+          // every item.
+          item.meta.link = feedUrl
+          // Add to the data.items.
+          data.items.push(item);
+        }
       } );
 
       // Feedparser will also emit an "error" event
