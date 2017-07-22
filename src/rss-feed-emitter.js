@@ -191,7 +191,6 @@ class RssFeedEmitter extends TinyEmitter {
     }
 
     if ( feed.refresh && typeof feed.refresh !== 'number' ) {
-
       throw {
         type: 'type_error',
         message: 'Your configuration object should have a "refresh" key with a number value'

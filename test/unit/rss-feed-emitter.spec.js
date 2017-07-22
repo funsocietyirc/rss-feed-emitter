@@ -195,7 +195,7 @@ describe( 'RssFeedEmitter ( unit )', () => {
           refresh: 'quickly'
         } );
 
-      } ).to.throw( {
+      } ).to.throw().to.eql( {
         type: 'type_error',
         message: 'Your configuration object should have a "refresh" key with a number value'
       } );
